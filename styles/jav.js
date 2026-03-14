@@ -54,10 +54,12 @@ document.addEventListener('click', function (e) {
         htmlchange('cardTitleInptC').value = CurrentT
         htmlchange('cardDesInptC').value = CurrentD
 
+        htmlchange('contentC').replaceWith(htmlchange('contentC').cloneNode(true))
+
         htmlchange('contentC').addEventListener('click', function () {
             const NewT = htmlchange('cardTitleInptC').value
             const NewD = htmlchange('cardDesInptC').value
-            
+
             target.querySelector('h2').innerHTML = NewT
             target.querySelector('p').innerHTML = NewD
         })
