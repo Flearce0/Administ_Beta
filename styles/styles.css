@@ -39,6 +39,16 @@ body {
     font-size: 13px;
 }
 
+.cardBA {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 0;
+    overflow: visible;
+    display: flex;
+    align-items: flex-start;
+}
+
 .navDark {
     background-color: #1d1d1d !important;
     color: white !important;

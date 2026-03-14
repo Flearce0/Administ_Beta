@@ -66,8 +66,7 @@
                             <div id="cardA" class="row flex-nowrap gap8">
                                 <div class="col-auto box1 bgT1">
                                     <div class="dropdown" style="position: relative;">
-                                        <a class="dropdown-toggle kebabB d-flex justify-content-end mt-1 mb-1"
-                                            style="position: absolute; top:0; right: 0; height: 0; overflow: visible; display: flex; align-items: flex-start;"
+                                        <a class="dropdown-toggle kebabB d-flex justify-content-end mt-1 mb-1 cardBA"
                                             href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
                                             aria-expanded="false">
                                             <img src="/images/three-dots-vertical.svg">
@@ -92,37 +91,24 @@
                                             <p>Priority: 5⭐️</p>
                                         </div>
                                     </div>
-                                    <a data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+                                    <a data-bs-toggle="modal" data-bs-target="#Progressbarmodal">
                                         <div class="progress" role="progressbar" aria-label="Example with label"
                                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                             <div class="progress-bar" style="width: 25%">25%</div>
                                         </div>
                                     </a>
                                     <div class="row justify-content-center">
-                                        <img style="width: auto; height: 100px;" src="/images/AdminLogo.png" alt="template.png"><br>
+                                        <img style="width: auto; height: 100px;" src="/images/AdminLogo.png"
+                                            alt="template.png"><br>
                                     </div>
                                     <div class="row justify-content-end">
-                                        <button type="button" class="btn btn-success w-50 text-center me-1 mb-1">Done</button>
+                                        <button type="button"
+                                            class="btn btn-success w-50 text-center me-1 mb-1">Done</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--
-                    <div class="dropdown show">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown link
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                    -->
-
                     <div class="row mx-auto justify-content-end">
                         <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
                             data-bs-target="#exampleModal" style="width: 150px;">
@@ -197,7 +183,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button form="cardSubmit" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save as
                         template</button>
-                    <button form="cardSubmit" id="cardS" type="button" class="btn btn-success">Save changes</button>
+                    <button form="cardSubmit" id="cardS" type="button" class="btn btn-success" data-bs-dismiss="modal">Save changes</button>
                 </div>
             </div>
         </div>
@@ -210,15 +196,40 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Task</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div class="modal-body">
+                        <form action="none" id="cardSubmitC">
+                            <label for="cardTitleInpt">Task Title (Letter Limit: 50)</label><br>
+                            <input class="w-100" type="text" id="cardTitleInptC" placeholder="Title"><br><br>
+                            <label for="cardDesInpt">Task Description (Letter Limit: 100)</label><br>
+                            <input class="w-100 pb-3" type="text" id="cardDesInptC" placeholder="Description"><br><br>
+                            <label for="cardImgInpt">Task image</label><br>
+                            <input type="text" id="cardImgInpt" placeholder="Under Construction">
+                        </form>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button id="contentC" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar edit Modal -->
+    <div class="modal fade" id="Progressbarmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="ProgressbarlableF">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
                 </div>
             </div>
         </div>

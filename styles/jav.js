@@ -42,9 +42,31 @@ document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => {
     new bootstrap.Popover(el)
 })
 
+document.addEventListener('click', function (e) {
+    if (!e.target || !e.target.classList) return
+    if (e.target.classList.contains('JSeditB')) { // Sets the edit button card
+        const target = e.target.closest('.box1') // Targets the card to change things
+
+        CurrentT = target.querySelector('h2').innerHTML // Read text inside h2, which is the title of card
+        CurrentD = target.querySelector('p').innerHTML // Reads current description
+        console.log(CurrentD, CurrentT)
+
+        htmlchange('cardTitleInptC').value = CurrentT
+        htmlchange('cardDesInptC').value = CurrentD
+
+        htmlchange('contentC').addEventListener('click', function () {
+            const NewT = htmlchange('cardTitleInptC').value
+            const NewD = htmlchange('cardDesInptC').value
+            
+            target.querySelector('h2').innerHTML = NewT
+            target.querySelector('p').innerHTML = NewD
+        })
+    }
+})
+
 function ThemeButton() {
     htmlchange("BackGnd").classList.toggle("darkM");
-    htmlchange("navB").classList.toggle("navDark"); y
+    htmlchange("navB").classList.toggle("navDark");
     document.querySelectorAll(".boxD").forEach(function (box) {
         box.classList.toggle("box2");
     });
@@ -68,32 +90,22 @@ async function cardinput() {
 
 function CardsADD(Ctitle, Cdes) {
     const card = document.createElement("div")
-    const title = document.createElement("h2")
-    const desc = document.createElement("p")
-    const img = document.createElement("img")
-
+    const dataid = Date.now()
     card.classList.add('col-auto', 'box1', 'bgT1');
-    title.innerHTML = Ctitle
-    desc.innerHTML = Cdes
-    img.src = '/images/AdminLogo.png'
-    img.alt = 'taskimg.img'
-    card.append(title, desc, img);
-    htmlchange('cardA').append(card);
-}
+    card.dataset.id = dataid
+    card.dataset.id
+    console.log(`Current Id: ${card.dataset.id}`);
 
-/* 
-<div id="cardA" class="row flex-nowrap gap8">
-    <div class="col-auto box1 bgT1">
+    card.innerHTML = `
         <div class="dropdown" style="position: relative;">
-            <a class="dropdown-toggle kebabB d-flex justify-content-end mt-1 mb-1"
-                style="position: absolute; top:0; right: 0; height: 0; overflow: visible; display: flex; align-items: flex-start;"
+            <a class="dropdown-toggle kebabB d-flex justify-content-end mt-1 mb-1 cardBA"
                 href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 <img src="/images/three-dots-vertical.svg">
             </a>
             <div class="dropdown-menu dropdown-menu-end"
                 aria-labelledby="dropdownMenuLink1">
-                <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                <a class="dropdown-item JSeditB" href="#" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop">
                     Edit
                 </a>
@@ -101,20 +113,33 @@ function CardsADD(Ctitle, Cdes) {
                 <a class="dropdown-item" href="#">Something else here</a>
             </div>
         </div>
-        <h2>Task 123</h2>
-        <p>Do this and that and this xyz</p>
+        <h2>${Ctitle}</h2>
+        <p>${Cdes}</p>
         <div class="row mb-2">
-            <div class="col-md-6 ms-1" style="background-color: rgb(255, 84, 84); color: rgb(255, 255, 255); border-radius: 10px; height:22px; width: 50%; font-size: 13px;">
-                <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Due: Next Month</p>
+            <div class="col-md-6 ms-1 duetab">
+                <p class="overf1">Due: Next Month</p>
             </div>
-            <div class="col-md-6 ms-1" style="background-color: rgba(74, 74, 74, 0.646); color: rgb(255, 255, 255); border-radius: 10px; height:22px; width: 40%; text-align: center; font-size: 13px;">
+            <div class="col-md-6 ms-1 prioritytab">
                 <p>Priority: 5⭐️</p>
             </div>
         </div>
-        <img src="/images/AdminLogo.png" alt="template.png">
-    </div>
-</div>
-*/
+        <a data-bs-toggle="modal" data-bs-target="#Progressbarmodal">
+            <div class="progress" role="progressbar" aria-label="Example with label"
+                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width: 25%">25%</div>
+            </div>
+        </a>
+        <div class="row justify-content-center">
+            <img style="width: auto; height: 100px;" src="/images/AdminLogo.png"
+                alt="template.png"><br>
+        </div>
+        <div class="row justify-content-end">
+            <button type="button"
+                class="btn btn-success w-50 text-center me-1 mb-1">Done</button>
+        </div>
+    `
+    htmlchange('cardA').append(card);
+}
 
 
 function CardsDELETE() {
