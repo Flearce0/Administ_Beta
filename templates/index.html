@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="shortcut icon" href="/images/AdminLogo.png" type="image/x-icon">
+    <script src="/jav.js" defer></script>
+    <title>Administ Panel</title>
+</head>
+
+<body id="BackGnd">
+    <nav id="navB" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="/dashboard"><img class="ms-2" src="/images/AdminLogo.png" alt="AdministLogo"
+                style="width: 50px; height: auto;"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Log out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/records">Record</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="ms-auto mt-2" style="list-style: none;">
+                <li class="nav-item me-3">
+                    <label class="switch">
+                        <input id="themes" type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 div1 w-75">
+                <h1 id="timechange"></h1>
+                <div class="container">
+                    <div id="bgC" class="row box1 mb-2">
+                        <h1>Current Tasks:</h1>
+                        <div class="container mb-2 scrollbox w-auto">
+                            <div id="cardA" class="row flex-nowrap gap8">
+                                <div class="col-auto box1 bgT1">
+                                    <div class="dropdown" style="position: relative;">
+                                        <a class="dropdown-toggle kebabB d-flex justify-content-end mt-1 mb-1"
+                                            style="position: absolute; top:0; right: 0; height: 0; overflow: visible; display: flex; align-items: flex-start;"
+                                            href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <img src="/images/three-dots-vertical.svg">
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end"
+                                            aria-labelledby="dropdownMenuLink1">
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdrop">
+                                                Edit
+                                            </a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                    <h2>Task 123</h2>
+                                    <p>Do this and that and this xyz</p>
+                                    <div class="row mb-2">
+                                        <div class="col-md-6 ms-1 duetab">
+                                            <p class="overf1">Due: Next Month</p>
+                                        </div>
+                                        <div class="col-md-6 ms-1 prioritytab">
+                                            <p>Priority: 5⭐️</p>
+                                        </div>
+                                    </div>
+                                    <a data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+                                        <div class="progress" role="progressbar" aria-label="Example with label"
+                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 25%">25%</div>
+                                        </div>
+                                    </a>
+                                    <div class="row justify-content-center">
+                                        <img style="width: auto; height: 100px;" src="/images/AdminLogo.png" alt="template.png"><br>
+                                    </div>
+                                    <div class="row justify-content-end">
+                                        <button type="button" class="btn btn-success w-50 text-center me-1 mb-1">Done</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="dropdown show">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown link
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="row mx-auto justify-content-end">
+                        <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" style="width: 150px;">
+                            Add Tasks
+                        </button>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 box1 boxD">
+                            <h2>Reminders:</h2>
+                            <div class="box1 boxD"
+                                style="border-left: solid 5px rgb(136, 204, 255); background-color: rgb(245, 245, 245);">
+                                <h2 class="pt-1">Reminder1</h2>
+                                <p class="pb-2">Description</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 box1 boxD">
+                            <h2>Current Routine Block:</h2>
+                            <div class="box1 boxD">
+                                <h3>Work Block 3</h3><br>
+                                <p>Template text</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 div1 w-25 box1 boxD">
+                <h1>Rank Today:</h1><br>
+                <div class="box1 bgN text-center">
+                    <h2>A</h2>
+                </div>
+                <h1>Today's Todo:</h1>
+                <ul>
+                    <li>Task 1</li>
+                    <li>Task 2</li>
+                </ul>
+                <form action="">
+                    <input type="checkbox" id="res1" name="res1" value="res1">
+                    <label for="res1">Task 1</label><br><br>
+                    <input type="checkbox" id="res1" name="res1" value="res1">
+                    <label for="res1">Task 1</label><br><br>
+                    <input type="checkbox" id="res1" name="res1" value="res1">
+                    <label for="res1">Task 1</label><br><br>
+                    <input type="checkbox" id="res1" name="res1" value="res1">
+                    <label for="res1">Task 1</label><br><br>
+                    <input type="checkbox" id="res1" name="res1" value="res1">
+                    <label for="res1">Task 1</label><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Make a Task</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="none" id="cardSubmit">
+                        <label for="cardTitleInpt">Task Title (Letter Limit: 50)</label><br>
+                        <input class="w-100" type="text" id="cardTitleInpt" placeholder="Title"><br><br>
+                        <label for="cardDesInpt">Task Description (Letter Limit: 100)</label><br>
+                        <input class="w-100 pb-3" type="text" id="cardDesInpt" placeholder="Description"><br><br>
+                        <label for="cardImgInpt">Task image</label><br>
+                        <input type="text" id="cardImgInpt" placeholder="Under Construction">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button form="cardSubmit" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save as
+                        template</button>
+                    <button form="cardSubmit" id="cardS" type="button" class="btn btn-success">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Card Edit Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
