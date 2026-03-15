@@ -175,15 +175,33 @@
                         <input class="w-100" type="text" id="cardTitleInpt" placeholder="Title"><br><br>
                         <label for="cardDesInpt">Task Description (Letter Limit: 100)</label><br>
                         <input class="w-100 pb-3" type="text" id="cardDesInpt" placeholder="Description"><br><br>
+                        <label for="cardDueInpt">Due When?</label><br>
+                        <select id="cardDueInpt">
+                            <option value="Today">Today</option>
+                            <option value="Tomorrow">Tomorrow</option>
+                            <option value="This Week">This Week</option>
+                            <option value="Next Week">Next Week</option>
+                            <option value="This Month">This Month</option>
+                            <option value="This Year">This Year</option>
+                        </select><br>
+                        <label for="cardPriorInpt">Priority Level</label><br>
+                        <select id="cardPriorInpt">
+                            <option value="1">⭐️</option>
+                            <option value="2">⭐️⭐️</option>
+                            <option value="3">⭐️⭐️⭐️</option>
+                            <option value="4">⭐️⭐️⭐️⭐️</option>
+                            <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+                        </select><br><br>
                         <label for="cardImgInpt">Task image</label><br>
-                        <input type="text" id="cardImgInpt" placeholder="Under Construction">
+                        <input type="file" id="cardImgInpt" placeholder="Under Construction">
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button form="cardSubmit" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save as
                         template</button>
-                    <button form="cardSubmit" id="cardS" type="button" class="btn btn-success" data-bs-dismiss="modal">Save changes</button>
+                    <button form="cardSubmit" id="cardS" type="button" class="btn btn-success"
+                        data-bs-dismiss="modal">Save changes</button>
                 </div>
             </div>
         </div>
@@ -206,8 +224,25 @@
                             <input class="w-100" type="text" id="cardTitleInptC" placeholder="Title"><br><br>
                             <label for="cardDesInpt">Task Description (Letter Limit: 100)</label><br>
                             <input class="w-100 pb-3" type="text" id="cardDesInptC" placeholder="Description"><br><br>
+                            <label for="cardDueInptC">Due When?</label><br>
+                            <select id="cardDueInptC">
+                                <option value="Today">Today</option>
+                                <option value="Tomorrow">Tomorrow</option>
+                                <option value="This Week">This Week</option>
+                                <option value="Next Week">Next Week</option>
+                                <option value="This Month">This Month</option>
+                                <option value="This Year">This Year</option>
+                            </select>
+                            <label for="cardPriorInptC">Priority Level</label><br>
+                            <select id="cardPriorInptC">
+                                <option value="1">⭐️</option>
+                                <option value="2">⭐️⭐️</option>
+                                <option value="3">⭐️⭐️⭐️</option>
+                                <option value="4">⭐️⭐️⭐️⭐️</option>
+                                <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+                            </select><br><br>
                             <label for="cardImgInpt">Task image</label><br>
-                            <input type="text" id="cardImgInpt" placeholder="Under Construction">
+                            <input type="file" id="cardImgInpt" placeholder="Under Construction">
                         </form>
                     </div>
                 </div>

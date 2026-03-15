@@ -42,27 +42,50 @@ document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => {
     new bootstrap.Popover(el)
 })
 
+
 document.addEventListener('click', function (e) {
     if (!e.target || !e.target.classList) return
     if (e.target.classList.contains('JSeditB')) { // Sets the edit button card
-        const target = e.target.closest('.box1') // Targets the card to change things
-
-        let CurrentT = target.querySelector('h2').innerHTML // Read text inside h2, which is the title of card
-        let CurrentD = target.querySelector('p').innerHTML // Reads current description
-        console.log(CurrentD, CurrentT)
+        const target = e.target.closest('.box1') // find the card to change things
+        let CurrentT = target.querySelector('h2').innerHTML // Finds and reads text inside h2, which is the title of card
+        let CurrentD = target.querySelector('p').innerHTML // Finds and reads current description that is p
+        let CurrentDu = target.querySelector('.CardDu').innerHTML
+        let CurrentP = target.querySelector('.CardP').innerHTML
+        console.log(CurrentD, CurrentT, CurrentDu, CurrentP) // querySelector = Find, innerHTML = Read
 
         htmlchange('cardTitleInptC').value = CurrentT
         htmlchange('cardDesInptC').value = CurrentD
+        htmlchange('cardDueInptC').value = CurrentDu
+        htmlchange('cardPriorInptC').value = CurrentP
 
         htmlchange('contentC').replaceWith(htmlchange('contentC').cloneNode(true))
 
         htmlchange('contentC').addEventListener('click', function () {
             const NewT = htmlchange('cardTitleInptC').value
             const NewD = htmlchange('cardDesInptC').value
+            const NewDu = htmlchange('cardDueInptC').value
+            const NewP = htmlchange('cardPriorInptC').value
+            console.log(NewT, NewD, NewDu, NewP);
 
             target.querySelector('h2').innerHTML = NewT
             target.querySelector('p').innerHTML = NewD
+            target.querySelector('.CardDu').innerHTML = `Due: ${NewDu}`
+            target.querySelector('.CardP').innerHTML = `Priority: ${NewP}⭐️`
+
+            bootstrap.Modal.getInstance(htmlchange('staticBackdrop')).hide() // BUG: NOT HIDING
         })
+    }
+    if (e.target.classList.contains('JSdeleteB')) {
+        const target = e.target.closest('.box1') // find the card to change things
+        target.remove();
+        console.log('Task deleted successfully!');
+    }
+    if (e.target.classList.contains('JSdoneB')) {
+        const target = e.target.closest('.box1') // find the card to change thingss
+        // Data retrive scripts
+        console.log('Datas retrived successfuly!')
+        target.remove();
+        console.log('Task removed successfully!')
     }
 })
 
@@ -77,6 +100,8 @@ function ThemeButton() {
 async function cardinput() {
     const Ctitle = htmlchange('cardTitleInpt').value
     const Cdes = htmlchange('cardDesInpt').value
+    const Cdue = htmlchange('cardDueInpt').value
+    const CPrior = htmlchange('cardPriorInpt').value
 
     let Tlength = Ctitle.length
     let Dlength = Cdes.length
@@ -86,11 +111,11 @@ async function cardinput() {
         console.log("Text too long")
     } else {
         console.log('Request Sent Succesfully')
-        CardsADD(Ctitle, Cdes)
+        CardsADD(Ctitle, Cdes, Cdue, CPrior) // ⬇️
     }
 }
 
-function CardsADD(Ctitle, Cdes) {
+function CardsADD(Ctitle, Cdes, Cdue, CPrior) {
     const card = document.createElement("div")
     const dataid = Date.now()
     card.classList.add('col-auto', 'box1', 'bgT1');
@@ -98,6 +123,7 @@ function CardsADD(Ctitle, Cdes) {
     card.dataset.id
     console.log(`Current Id: ${card.dataset.id}`);
 
+    // BUG: SAVING ONE OPTION WITHOUT TOUCHING THE OTHER ONE REWRITES THE OTHER OPTION MAKING THE THAT TAG EMPTY
     card.innerHTML = `
         <div class="dropdown" style="position: relative;">
             <a class="dropdown-toggle kebabB d-flex justify-content-end mt-1 mb-1 cardBA"
@@ -111,18 +137,18 @@ function CardsADD(Ctitle, Cdes) {
                     data-bs-target="#staticBackdrop">
                     Edit
                 </a>
-                <a class="dropdown-item" href="#">Delete</a>
+                <a class="dropdown-item JSdeleteB" href="#">Delete</a>
                 <a class="dropdown-item" href="#">Something else here</a>
             </div>
         </div>
-        <h2>${Ctitle}</h2>
+        <h2 class="me-3">${Ctitle}</h2>
         <p>${Cdes}</p>
         <div class="row mb-2">
             <div class="col-md-6 ms-1 duetab">
-                <p class="overf1">Due: Next Month</p>
+                <p class="overf1 CardDu">Due: ${Cdue}</p> <!-- NEED CHANGE HERE -->
             </div>
             <div class="col-md-6 ms-1 prioritytab">
-                <p>Priority: 5⭐️</p>
+                <p class="CardP">Priority: ${CPrior}⭐️</p>
             </div>
         </div>
         <a data-bs-toggle="modal" data-bs-target="#Progressbarmodal">
@@ -133,11 +159,11 @@ function CardsADD(Ctitle, Cdes) {
         </a>
         <div class="row justify-content-center">
             <img style="width: auto; height: 100px;" src="/images/AdminLogo.png"
-                alt="template.png"><br>
+                alt="template.png"><br> <!-- NEED CHANGE HERE -->
         </div>
         <div class="row justify-content-end">
             <button type="button"
-                class="btn btn-success w-50 text-center me-1 mb-1">Done</button>
+                class="btn btn-success w-50 text-center me-1 mb-1 JSdoneB">Done</button>
         </div>
     `
     htmlchange('cardA').append(card);
