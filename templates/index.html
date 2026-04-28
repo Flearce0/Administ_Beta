@@ -58,7 +58,7 @@
                 <div class="container">
                     <div id="bgC" class="row box1 mb-2">
                         <h1>Current Tasks:</h1>
-                        <div class="container mb-2 scrollbox w-auto">
+                        <div class="container mb-2 scrollbox w-auto pb-1">
                             <div id="cardA" class="row flex-nowrap gap8">
                                 <div class="col-auto box1 bgT2">
                                     <div class="dropdown" style="position: relative;">
@@ -114,20 +114,38 @@
                     <div class="row">
                         <div class="col-md-6 box1 boxD3">
                             <h2>Reminders:</h2>
-                            <div class="box1 boxD2 mb-2 reminderL">
-                                <div class="row ms-1">
-                                    <h2 class="pt-1">AS 91868 Internal Assessment - Part A v2</h2>
-                                    <p class="pb-2">Description</p>
-                                    <div class="container">
-                                        <p>Due on: Monday, 23/03/2026</p>
-                                        <p>Remaining Time: 10D, 10H</p>
+                            <div style="overflow-y: scroll; height: 42vh">
+                                <div id="Reminder_Area" class="box1 boxD2 mb-2 reminderL">
+                                    <div class="row ms-1">
+                                        <h2 class="pt-1">AS 91868 Internal Assessment - Part A v2</h2>
+                                        <p class="pb-2">Description</p>
+                                        <div class="container">
+                                            <p>Due on: Monday, 23/03/2026</p>
+                                            <p>Remaining Time: 10D, 10H</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="box1 boxD2"
-                                style="border-left: solid 5px rgb(136, 255, 150); background-color: rgb(245, 245, 245);">
-                                <h2 class="pt-1">Reminder 2</h2>
-                                <p class="pb-2">Description</p>
+                                <div class="box1 boxD2"
+                                    style="border-left: solid 5px rgb(136, 255, 150); background-color: rgb(245, 245, 245);">
+                                    <h2 class="pt-1">Reminder 2</h2>
+                                    <p class="pb-2">Description</p>
+                                </div>
+
+                                <div class="box1 boxD2 mb-2 reminderL">
+                                    <div class="row ms-1">
+                                        <h2 class="pt-1">AS 91868 Internal Assessment - Part A v2</h2>
+                                        <p class="pb-2">Description</p>
+                                        <div class="container">
+                                            <p>Due on: Monday, 23/03/2026</p>
+                                            <p>Remaining Time: 10D, 10H</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box1 boxD2"
+                                    style="border-left: solid 5px rgb(136, 255, 150); background-color: rgb(245, 245, 245);">
+                                    <h2 class="pt-1">Reminder 2</h2>
+                                    <p class="pb-2">Description</p>
+                                </div>
                             </div>
 
                             <div class="row justify-content-end mb-2 mt-2 me-1">
@@ -140,6 +158,9 @@
                         <div class="col-md-6 box1 boxD3">
                             <h2>Current Routine Block:</h2>
                             <ul class="list-group boxD2 mb-3">
+                                <li class="list-group-item">
+                                    <p>Work Block 2 - 13:20 ~ 14:40</p>
+                                </li>
                                 <li class="list-group-item">
                                     <p>Work Block 2 - 13:20 ~ 14:40</p>
                                 </li>
@@ -157,9 +178,18 @@
                                     </div>
                                 </li>
                                 <li class="list-group-item">
+                                    <p>Work Block 2 - 13:20 ~ 14:40</p>
+                                </li>
+                                <li class="list-group-item">
                                     <p>Work Block 4 - 15:40 ~ 16:40</p>
                                 </li>
                             </ul>
+                            <div class="row justify-content-end">
+                                <button type="button" class="btn btn-primary me-2" style="width: 150px"
+                                    data-bs-toggle="modal" data-bs-target="#RotuineBackdrop">
+                                    Edit Routine
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,7 +200,8 @@
                 <div class="line mt-3 mb-3"></div>
                 <div class="container">
                     <h1>Today's Todo:</h1>
-                    <div id="TDcontainer" class="row box1 boxD2 d-flex justify-content-center">
+                    <div id="TDcontainer" class="row box1 boxD2 d-flex justify-content-center"
+                        style="overflow-y: scroll; height: 73vh">
                     </div>
                 </div>
             </div>
@@ -327,13 +358,14 @@
                     <div class="box1 boxD2 mb-2 reminderTemp">
                         <div class="row ms-1">
                             <form action="none" id="ReminderSubmitR">
-                                <input id="RemindTItle" type="text" placeholder="TItle:"><br>
-                                <input id="RemindDes" type="text" placeholder="Description:"><br>
-                                <h2 class="pt-1">AS 91868 Internal Assessment - Part A v2</h2>
-                                <p class="pb-2">Description</p>
+                                <input
+                                    style="height: 50px; width: 85%; font-size: 30px; margin-bottom: 10px; margin-top: 20px;"
+                                    id="RemindTItle" type="text" placeholder="TItle:"><br>
+                                <input style="width: 70%;" id="RemindDes" type="text" placeholder="Description:"><br>
                                 <div class="container">
-                                    <p>Due on: Monday, 23/03/2026</p>
-                                    <p>Remaining Time: 10D, 10H</p>
+                                    <p class="pt-2">Due on: Monday, <input style="border: none;" type="date" id="Due"
+                                            name="due"></p>
+                                    <p>Remaining Time: ---</p>
                                 </div>
                             </form>
                         </div>
@@ -346,6 +378,27 @@
             </div>
         </div>
     </div>
+
+    <!-- Routines Modal -->
+    <div class="modal fade" id="RotuineBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="RotuineBackdropLabel">Routines</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

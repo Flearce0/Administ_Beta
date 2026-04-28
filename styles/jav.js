@@ -378,48 +378,6 @@ async function CardsADD(Ctitle, Cdes, Cdue, CPrior, fromInit = false, Cid = null
     tasksSYNC()
 }
 
-async function RemindersADD(fromInit = false, Rid = null) {
-    const reminder = document.createElement('div')
-    const dataid = Rid || Number(Date.now()) + 1
-    reminder.classList.add('box1', 'boxD2', 'mb-2', 'reminderTemp')
-    reminder.dataset.id = dataid
-    reminder.dataset.id
-    console.log(`Current Reminder ID: ${reminder.dataset.id}`)
-
-    reminder.innerHTML = `
-            <div class="row ms-1">
-                <h2 class="pt-1">AS 91868 Internal Assessment - Part A v2</h2>
-                <p class="pb-2">Description</p>
-                <div class="container">
-                    <p>Due on: Monday, 23/03/2026</p>
-                    <p>Remaining Time: 10D, 10H</p>
-                </div>
-            </div>
-    `
-
-    if (!fromInit) {
-        await fetch('/saveRemind', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                title: null,
-                des: null,
-                duetime: null,
-                remindid: dataid
-            })
-        })
-    }
-
-    Rdata.push({
-        Rtitle: null,
-        des: null,
-        duetime: null,
-        remindid: dataid
-    })
-    console.log('Reminder Saved to DB')
-    htmlchange('').append(reminder)
-}
-
 function tasksSYNC() {
     console.log('tasksSYNC called, Cdata:', Cdata) // DEBUG LINE
     console.log('TDtasks:', Cdata.filter(t => t.due === 'Today')) // DEBUG LINE
@@ -453,4 +411,26 @@ function tasksSYNC() {
         </div>
         `
     }
+}
+
+async function RemindersADD() {
+    const reminder = document.createElement('div')
+    const dataid = Number(Date.now()) + 1
+    reminder.classList.add('mb-2', 'reminderTemp')
+    reminder.dataset = dataid
+    reminder.dataset
+    console.log(`Current Reminder ID: ${reminder.dataset.id}`)
+
+    reminder.innerHTML = `
+            <div class="row ms-1 box1, boxD2">
+                <h2 class="pt-1">Reminder 1234</h2>
+                <p class="pb-2">Description 123</p>
+                <div class="container">
+                    <p>Due on: Monday, 23/03/2026</p>
+                    <p>Remaining Time: 10D, 10H</p>
+                </div>
+            </div>
+    `
+    console.log('Not Saved to DB')
+    htmlchange('Reminder_Area').append(reminder)
 }
